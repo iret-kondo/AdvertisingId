@@ -20,6 +20,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        pickFirst("META-INF/atomicfu.kotlin_module")
+    }
+
 }
 
 dependencies {
@@ -30,5 +35,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation 'com.google.android.gms:play-services-ads-identifier:16.0.0', {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.0'
 }
 
